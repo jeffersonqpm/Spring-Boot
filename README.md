@@ -1,7 +1,8 @@
 # 🚀 Jornada Spring Boot - Treina Recife
 
-Bem-vindo ao repositório de estudos do curso de **Spring Boot** realizado na [Treina Recife](https://www.treinarecife.com.br/). Este projeto serve como um guia prático e histórico de evolução técnica durante as aulas.
+# Criando APIs REST com Spring Boot
 
+**REST (Representational State Transfer)** é um estilo de arquitetura para sistemas distribuídos. Ele foi introduzido por Roy Fielding em sua tese de doutorado em 2000 e é amplamente utilizado para desenvolver APIs na web devido à sua simplicidade e flexibilidade.
 ---
 
 ## 📌 Sobre o Curso
