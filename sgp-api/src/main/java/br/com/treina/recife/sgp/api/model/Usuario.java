@@ -1,12 +1,15 @@
 package br.com.treina.recife.sgp.api.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 
 import java.time.LocalDate;
 
 //import jakarta.annotation.Generated;
 
+import br.com.treina.recife.sgp.api.enums.StatusUsuario;
 import jakarta.persistence.Column;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -44,7 +47,12 @@ public class Usuario {
     @Column(nullable = false)
     private LocalDate dataNascimento;
 
+    // NOT NULL e 
+    @Column(nullable = false)
+    //  mapear um campo de enumeração (enum)
+    @Enumerated(EnumType.STRING)
+    private StatusUsuario status;
 
-    private String status;
+    
 
 }
