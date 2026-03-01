@@ -53,4 +53,6 @@ public class Projeto {
     @JoinColumn(nullable = false, name="usuario_resp_id")
     private Usuario responsavel;
 
+
+
 }
