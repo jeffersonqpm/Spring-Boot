@@ -9,7 +9,7 @@ public class SgpApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SgpApiApplication.class, args);
 
-		System.out.println("Olá Mundo!");
+		System.out.println(">>> [CONCLUÍDO COM SUCESSO] <<<");
 	}
 
 }

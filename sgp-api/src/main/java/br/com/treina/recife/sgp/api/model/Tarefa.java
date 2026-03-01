@@ -42,7 +42,7 @@ public class Tarefa {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private StatusPrioridadeTarefa statusPrioridadeTarefa;
+    private StatusPrioridadeTarefa prioridadeTarefa;
 
     private StatusTarefa statusTarefa;
 
@@ -53,5 +53,7 @@ public class Tarefa {
     @ManyToOne
     @JoinColumn(nullable = false, name = "usuario_id")
     private Usuario usuarioId;
+
+
 
 }
