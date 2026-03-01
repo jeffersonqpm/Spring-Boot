@@ -21,11 +21,11 @@ import lombok.NoArgsConstructor;
 @Data// cria get sets 
 @NoArgsConstructor // CRIA O CONSTRUTUOR SEM ARGUMENTOS
 @AllArgsConstructor // CRIA O CONTRUTOR COM OS ARGUMENTOS
-@Entity(name = "TB_USUARIOS") // NOME DA TABELA NO BD
+@Entity(name = "TB_USUARIOS") // DIZ AO SPRING QUE ESSA CLASSE É UMA TABELA.
 
 public class Usuario {
-    @Id // chave primaria
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id // DEFINE A CHAVE PRIMÁRIA (PK).
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//DEFINE A CHAVE PRIMÁRIA (PK).
     private Long id;
 
     // VARCHAR(50) NOT NULL
