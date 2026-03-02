@@ -43,7 +43,9 @@ public class Tarefa {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusPrioridadeTarefa prioridadeTarefa;
-
+    
+   @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private StatusTarefa statusTarefa;
 
     @ManyToOne
