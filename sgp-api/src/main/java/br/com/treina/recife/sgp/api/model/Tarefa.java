@@ -2,7 +2,7 @@ package br.com.treina.recife.sgp.api.model;
 
 import java.time.LocalDate;
 
-import br.com.treina.recife.sgp.api.enums.StatusPrioridadeTarefa;
+import br.com.treina.recife.sgp.api.enums.PrioridadeTarefa;
 import br.com.treina.recife.sgp.api.enums.StatusTarefa;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -42,19 +42,20 @@ public class Tarefa {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private StatusPrioridadeTarefa prioridadeTarefa;
-    
+    private PrioridadeTarefa prioridade;
+
    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private StatusTarefa statusTarefa;
+    private StatusTarefa status;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(nullable = false, name = "projeto_id")
-    private Projeto projetoId;
+    private Projeto projeto;
 
-    @ManyToOne
-    @JoinColumn(nullable = false, name = "usuario_id")
-    private Usuario usuarioId;
 
 
 
