@@ -55,7 +55,7 @@ public class Tarefa {
     @ManyToOne
     @JoinColumn(nullable = false, name = "projeto_id")
     private Projeto projeto;
-
+//teste
 
 
 
