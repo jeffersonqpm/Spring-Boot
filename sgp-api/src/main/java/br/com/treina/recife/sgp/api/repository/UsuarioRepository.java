@@ -10,4 +10,5 @@ import br.com.treina.recife.sgp.api.model.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
     
+    
 }
