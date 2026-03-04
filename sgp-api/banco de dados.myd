@@ -1,0 +1,7 @@
+
+
+
+SELECT id, nome, cpf, email,data_nascimento,  status
+FROM tb_usuarios;
+
+DELETE FROM sgp_db.tb_usuarios WHERE id = 3;

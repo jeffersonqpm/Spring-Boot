@@ -33,14 +33,17 @@ public class Usuario {
     private String nome;
 
     // varchar(11) NOT NULL UNIQUE
-    @Column(nullable = false, length = 11, unique = true)
+    // @Column(nullable = false, length = 11, unique = true);
+    @Column(nullable = false, length = 11)
     private String cpf;
     // VARCHAR(255) NOT NULL UNIQUE
-    @Column(nullable = false, unique = true)
+    // @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String email;
 
     // varchar(19) not null
-    @Column(nullable = false, length = 19, unique = true)
+    // @Column(nullable = false, length = 19, unique = true)
+    @Column(nullable = false, length = 19)
     private String senha;
 
     // DATETIME NOT NULL

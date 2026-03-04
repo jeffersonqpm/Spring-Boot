@@ -25,4 +25,9 @@ public class UsuarioController {
 
     }
 
+    // @PostMapping
+    // public void excluir(Long id){
+    //     usuarioService.excluirUsuario(id);
+    // }
+
 }
