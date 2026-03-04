@@ -2,7 +2,15 @@
 
 package br.com.treina.recife.sgp.api.controller;
 
+import java.lang.StackWalker.Option;
+import java.util.List;
+
+import org.apache.el.stream.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,15 +27,30 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @PostMapping // metodo http que chama o requestmapping (api/usuarios)
-    public Usuario cadastrar(@RequestBody Usuario usuario) { // @RequestBody corpo da requisiçao
+    // public Usuario cadastrar(@RequestBody Usuario usuario) { // @RequestBody
+    // corpo da requisiçao
+    public ResponseEntity<Usuario> cadastrar(@RequestBody Usuario usuario) { // @RequestBody corpo da requisiçao
 
-            return usuarioService.cadastrarUsuario(usuario);
-
+        // return usuarioService.cadastrarUsuario(usuario);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(usuarioService.cadastrarUsuario(usuario));// retorna 2001
     }
 
-    // @PostMapping
-    // public void excluir(Long id){
-    //     usuarioService.excluirUsuario(id);
-    // }
+    @GetMapping
+    public ResponseEntity<List<Usuario>> listar() {
+        return ResponseEntity.ok(usuarioService.listarUsuarios());// retorn 200
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<Usuario> ObterDadosPeloId(@PathVariable Long id) { //@PathVariable a variavel vem no endpoint
+        Optional<Usuario> usuario = usuarioService.obterDadosDoUsuario(id);
+
+        if(usuario.isEmpty()){
+            return ResponseEntity.notFound().build();
+
+        }
+
+        return ResponseEntity.ok(usuario.get());
+    }
 
 }
