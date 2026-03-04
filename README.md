@@ -1,4 +1,4 @@
-# Criando APIs REST com Spring Boot - Jefferson Queiroz
+# Criando APIs REST com Spring Boot
 
 **REST (Representational State Transfer)** é um estilo de arquitetura para sistemas distribuídos. Ele foi introduzido por Roy Fielding em sua tese de doutorado em 2000 e é amplamente utilizado para desenvolver APIs na web devido à sua simplicidade e flexibilidade.
 
