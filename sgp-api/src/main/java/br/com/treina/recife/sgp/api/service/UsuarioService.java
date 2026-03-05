@@ -28,8 +28,7 @@ public class UsuarioService {
 
     // SELECT * FROM TB_USUARIO WHERE ID = ?
 
-    public Optional<Usuario> obterDadosDoUsuario(Long id) { // se não receber um ID no parametro o Optional retorna o
-                                                            // null
+    public Optional<Usuario> obterDadosDoUsuario(Long id) { // se não receber um ID no parametro o Optional retorna o null
         return usuarioRepository.findById(id); //findbyid é do optional
     }
 

@@ -1,8 +1,8 @@
 //RECEBE A REQUISIÇÃO HTTP (O PEDIDO DO USUÁRIO/CLIENTE). endpoints
-
 package br.com.treina.recife.sgp.api.controller;
 
 // import java.lang.StackWalker.Option;
+// import java.net.http.HttpHeaders;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,15 +34,14 @@ public class UsuarioController {
     // corpo da requisiçao
     public ResponseEntity<Usuario> cadastrar(@RequestBody Usuario usuario) { // @RequestBody pega o corpo da requisição HTTP e transforma em um objeto java
 
-
         // return usuarioService.cadastrarUsuario(usuario);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(usuarioService.cadastrarUsuario(usuario));// retorna 2001
+        return ResponseEntity.status(HttpStatus.CREATED)// retorna 2001
+                .body(usuarioService.cadastrarUsuario(usuario));
     }
 
     @GetMapping
     public ResponseEntity<List<Usuario>> listar() {
-        return ResponseEntity.ok(usuarioService.listarUsuarios());// retorn 200
+        return ResponseEntity.ok(usuarioService.listarUsuarios());// retorna 200
     }
 
     @GetMapping("{id}")
@@ -50,11 +49,11 @@ public class UsuarioController {
         Optional<Usuario> usuario = usuarioService.obterDadosDoUsuario(id);
 
         if (usuario.isEmpty()) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.notFound().build(); //HTTP 404 Not Found status
 
         }
 
-        return ResponseEntity.ok(usuario.get());
+        return ResponseEntity.ok(usuario.get()); //HTTP 200
     }
 
     @DeleteMapping("{id}")
