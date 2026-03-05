@@ -24,12 +24,14 @@ public class ProjetoController {
 
     @Autowired
     private ProjetoService projetoService;
+    // ProjetoService projetoService = new ProjetoService();
+
 
     @PostMapping
     public ResponseEntity<Projeto> cadastrar(@RequestBody Projeto projeto) {
 
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(projetoService.cadastraProjeto(projeto));
+                .body(projetoService.cadastraProjeto(projeto));// retorna 2001
     }
 
     @GetMapping
