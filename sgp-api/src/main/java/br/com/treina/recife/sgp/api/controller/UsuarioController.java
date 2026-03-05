@@ -22,17 +22,18 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.treina.recife.sgp.api.model.Usuario;
 import br.com.treina.recife.sgp.api.service.UsuarioService;
 
-@RestController
+@RestController// faz a conversão Java -> Jason para enviar a resposta
 @RequestMapping("/api/usuarios")
 public class UsuarioController {
 
-    @Autowired
+    @Autowired //instanciar, gerenciar e conectar automaticamente os objetos, eliminando a necessidade de criar manualmente o "new"
     private UsuarioService usuarioService;
 
     @PostMapping // metodo http que chama o requestmapping (api/usuarios)
     // public Usuario cadastrar(@RequestBody Usuario usuario) { // @RequestBody
     // corpo da requisiçao
-    public ResponseEntity<Usuario> cadastrar(@RequestBody Usuario usuario) { // @RequestBody corpo da requisiçao
+    public ResponseEntity<Usuario> cadastrar(@RequestBody Usuario usuario) { // @RequestBody pega o corpo da requisição HTTP e transforma em um objeto java
+
 
         // return usuarioService.cadastrarUsuario(usuario);
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -67,7 +68,7 @@ public class UsuarioController {
 
         usuarioService.excluirUsuario(id);
 
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.noContent().build(); // noContent(): retorna 2004
 
     }
 

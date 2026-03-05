@@ -2,7 +2,7 @@ package br.com.treina.recife.sgp.api.service;
 
 import java.util.List;
 import java.util.Optional;
-import br.com.treina.recife.sgp.api.repository.UsuarioRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,18 +12,10 @@ import br.com.treina.recife.sgp.api.repository.ProjetoRepository;
 @Service
 public class ProjetoService {
 
-    private final UsuarioRepository usuarioRepository;
+   
 
     @Autowired
     private ProjetoRepository projetoRepository;
-
-    // ProjetoService(UsuarioRepository usuarioRepository) {
-    //     this.usuarioRepository = usuarioRepository;
-    // }
-
-    ProjetoService(UsuarioRepository usarioRepository){
-        this.usuarioRepository = usuarioRepository;
-    }
 
     // SELECT * FROM TB_PROJETOS
 
@@ -57,6 +49,6 @@ public class ProjetoService {
     // DELETE FROM TB_TAREFAS WHERE ID?
 
     public void excluirTarefa(Long id) {
-        usuarioRepository.deleteById(id);
+        projetoRepository.deleteById(id);
     }
 }
