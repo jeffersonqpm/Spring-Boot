@@ -1,6 +1,8 @@
 package br.com.treina.recife.sgp.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +23,7 @@ public class ProjetoController {
     public ResponseEntity<Projeto> cadastrar (@RequestBody Projeto projeto){
 
         return ResponseEntity.status(HttpStatus.CREATED)
-        .body(projetoService.cadastrarProjeto(projeto));
+        .body(projetoService.cadastraProjeto(projeto));
     }
 
 }

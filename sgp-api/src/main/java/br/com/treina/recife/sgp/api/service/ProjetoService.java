@@ -17,7 +17,11 @@ public class ProjetoService {
     @Autowired
     private ProjetoRepository projetoRepository;
 
-    ProjetoService(UsuarioRepository usuarioRepository) {
+    // ProjetoService(UsuarioRepository usuarioRepository) {
+    //     this.usuarioRepository = usuarioRepository;
+    // }
+
+    ProjetoService(UsuarioRepository usarioRepository){
         this.usuarioRepository = usuarioRepository;
     }
 
