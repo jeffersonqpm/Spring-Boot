@@ -68,7 +68,7 @@ public class UsuarioController {
 
         usuarioService.excluirUsuario(id);
 
-        return ResponseEntity.noContent().build(); // noContent(): retorna 2004
+        return ResponseEntity.noContent().build(); // noContent(): retorna HTTP 204, body vazio
 
     }
 
