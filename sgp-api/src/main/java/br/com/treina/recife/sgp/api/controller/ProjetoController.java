@@ -16,16 +16,15 @@ public class ProjetoController {
     @Autowired
     private ProjetoService projetoService;
 
-    @PostMapping
-    public Projeto cadastrar(@RequestBody Projeto projeto) {
 
-        return projetoService.cadastraProjeto(projeto);
+    @PostMapping
+    public ResponseEntity<Projeto> cadastrar (@RequestBody Projeto projeto){
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+        .body(projetoService.cadastrarProjeto(projeto));
     }
 
-    // @PostMapping
-    // public void excluir(Long id){
-    //     projetoService.excluirTarefa(id);
-    // }
-
-
 }
+// verificar o erro aqui
+
+

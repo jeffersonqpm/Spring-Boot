@@ -2,7 +2,7 @@
 
 package br.com.treina.recife.sgp.api.controller;
 
-import java.lang.StackWalker.Option;
+// import java.lang.StackWalker.Option;
 import java.util.List;
 import java.util.Optional;
 
