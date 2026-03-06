@@ -21,6 +21,7 @@
     "titulo": "Java Avançado",
     "descricao": "Tudo sobre java e mais um pouco",
     "dataCriacao": "2026-03-03",
+    "dataConclusao": "2026-03-03",
     "prioridade": "MEDIA",
     "status": "PENDENTE",
     "usuario": 1L,
@@ -28,19 +29,25 @@
 
 }
 
-{
+{ // PROJETOS
 
-    // CADASTRAR PROJETOS
-    "nome": "Projeto treina",
-    "descricao": "PrEstudo de java e springboot",
-    "dataInicio": "2026-03-03",
-    "dataFinal": "2026-03-10",
+    "nome": "Projeto treinaAA",
+    "descricao": "PrEstudoA de java e springboot",
+    "dataInicio": "2026-03-06",
+    "dataFinal": "2026-03-11",
     "status": "CONCLUIDO",
-    "responsavel": {
+    "responsavel":	{
+			
+		"id":6,
+    "nome":"Jefferson",
+    "cpf": "07656541324",
+    "email":"jefferson@gmail.com",
+    "senha":"12345678",
+    "dataNascimento":"1989-09-28",
+    "status": "ATIVO"   
 
-        "id": 2,
-        
-    }
+}
+									
 
 
 }
