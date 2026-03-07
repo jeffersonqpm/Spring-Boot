@@ -1,12 +1,11 @@
 //RECEBE A REQUISIÇÃO HTTP (O PEDIDO DO USUÁRIO/CLIENTE). endpoints
 package br.com.treina.recife.sgp.api.controller;
 
-// import java.lang.StackWalker.Option;
-// import java.net.http.HttpHeaders;
+
 import java.util.List;
 import java.util.Optional;
 
-// import org.apache.el.stream.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +24,7 @@ import br.com.treina.recife.sgp.api.service.UsuarioService;
 @RestController// faz a conversão Java -> Jason para enviar a resposta
 @RequestMapping("/api/usuarios")
 public class UsuarioController {
+    //teste
 
     @Autowired //instanciar, gerenciar e conectar automaticamente os objetos, eliminando a necessidade de criar manualmente o "new"
     private UsuarioService usuarioService;

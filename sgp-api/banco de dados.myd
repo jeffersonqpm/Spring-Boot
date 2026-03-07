@@ -1,7 +1,15 @@
 
 
+🟢Usuario
+SELECT id, nome "Nome", cpf "CPF", email "E-MAIL",data_nascimento "Data_nascimento",  status "Status" FROM tb_usuarios;
 
-SELECT id, nome, cpf, email,data_nascimento,  status
-FROM tb_usuarios;
+
+🟢Tarefa
+SELECT id "ID", nome "Nome Projeto", descricao "Descrição", data_final "Data_Final",data_inicio "Data_inicio", status "Status", usuario_resp_id FROM sgp_db.tb_projetos;
+
+🟢
+🟢
+🟢
+
 
 DELETE FROM sgp_db.tb_usuarios WHERE id = 3;

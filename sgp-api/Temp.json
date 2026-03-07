@@ -14,22 +14,9 @@
 
 }
 
-{
+// PROJETOS
 
-    // CADASTRAR TAREFA
-
-    "titulo": "Java Avançado",
-    "descricao": "Tudo sobre java e mais um pouco",
-    "dataCriacao": "2026-03-03",
-    "dataConclusao": "2026-03-03",
-    "prioridade": "MEDIA",
-    "status": "PENDENTE",
-    "usuario": 1L,
-    "projeto": 1L
-
-}
-
-{ // PROJETOS
+{ 
 
     "nome": "Projeto treinaAA",
     "descricao": "PrEstudoA de java e springboot",
@@ -38,7 +25,7 @@
     "status": "CONCLUIDO",
     "responsavel":	{
 			
-		"id":6,
+		"id":1,
     "nome":"Jefferson",
     "cpf": "07656541324",
     "email":"jefferson@gmail.com",
@@ -47,7 +34,21 @@
     "status": "ATIVO"   
 
 }
-									
+}
 
+// TRAFEFAS
 
+{
+    "titulo": "Finalizar documentação da API",
+    "descricao": "Escrever os endpoints principais no Swagger e validar com o time de QA.",
+    "dataCriacao": "2026-03-06",
+    "dataConclusao": "2026-03-10",
+    "prioridade": "ALTA",
+    "status": "PENDENTE",
+    "usuario": {
+        "id": 1
+    },
+    "projeto": {
+        "id": 5
+    }
 }
