@@ -71,7 +71,7 @@ public class TarefaController {
   }
 
   @PutMapping("{id}")
-  public ResponseEntity<Tarefa> atualizar(@PathVariable long id, @RequestBody Tarefa dadosTarefa) {
+  public ResponseEntity<Tarefa> atualizar(@PathVariable Long id, @RequestBody Tarefa dadosTarefa) {
     Optional<Tarefa> tarefa = tarefaService.obeterDadosDeTarefa(id);
 
     if (tarefa.isEmpty()) {
