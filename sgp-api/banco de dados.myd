@@ -7,7 +7,13 @@ SELECT id, nome "Nome", cpf "CPF", email "E-MAIL",data_nascimento "Data_nascimen
 🟢Tarefa
 SELECT id "ID", nome "Nome Projeto", descricao "Descrição", data_final "Data_Final",data_inicio "Data_inicio", status "Status", usuario_resp_id FROM sgp_db.tb_projetos;
 
-🟢
+🟢Usuario / projetos
+
+SELECT us.nome "Nome_usuário", pj.nome "Nome_projeto", us.email "E-mail", pj.data_final from
+tb_usuarios us 
+inner JOIN tb_projetos pj on us.id = pj.id
+ORDER BY 1;
+
 🟢
 🟢
 
