@@ -27,7 +27,7 @@ public class TarefaController {
   private TarefaService tarefaService;
 
   @PostMapping
-  public ResponseEntity<Tarefa> tarefa(@RequestBody Tarefa tarafa) {
+  public ResponseEntity<Tarefa> cadastrar(@RequestBody Tarefa tarafa) {
 
     return ResponseEntity.status(HttpStatus.CREATED)
         .body(tarefaService.cadastrarTarefa(tarafa));
@@ -40,7 +40,7 @@ public class TarefaController {
 
   }
 
-  @GetMapping("{id}")
+  @GetMapping("/{id}")
   public ResponseEntity<Tarefa> obterDadosPorId(@PathVariable Long id) {
 
     Optional<Tarefa> tarefa = tarefaService.obeterDadosDeTarefa(id);
@@ -55,7 +55,7 @@ public class TarefaController {
 
   }
 
-  @DeleteMapping("{id}")
+  @DeleteMapping("/{id}")
   public ResponseEntity<String> excluir(@PathVariable Long id) {
     Optional<Tarefa> tarefa = tarefaService.obeterDadosDeTarefa(id);
 
@@ -67,19 +67,19 @@ public class TarefaController {
 
     tarefaService.excluirTarefa(id);
 
-    return ResponseEntity.noContent().build();
+    return ResponseEntity.noContent().build(); //204
   }
 
-  @PutMapping("{id}")
+  @PutMapping("/{id}")
   public ResponseEntity<Tarefa> atualizar(@PathVariable Long id, @RequestBody Tarefa dadosTarefa) {
     Optional<Tarefa> tarefa = tarefaService.obeterDadosDeTarefa(id);
 
     if (tarefa.isEmpty()) {
 
-      return ResponseEntity.notFound().build();
+      return ResponseEntity.notFound().build();//404
 
     }
-    return ResponseEntity.ok(tarefaService.atualizaTarefa(id, dadosTarefa));
+    return ResponseEntity.ok(tarefaService.atualizaTarefa(id, dadosTarefa));//200
   }
 
 }
