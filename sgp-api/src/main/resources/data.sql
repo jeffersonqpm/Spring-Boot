@@ -4,6 +4,26 @@
 -- spring.jpa.defer-datasource-initialization=true
 -- spring.sql.init.mode=always
 
+-- Registro 1: ATIVO
+INSERT INTO TB_USUARIOS (nome, cpf, email, senha, data_nascimento, status)
+VALUES ('Ricardo Sanches', '55544433322', 'ricardo.sanches@email.com', 'senha123', '1992-04-12', 'ATIVO');
+
+-- Registro 2: INATIVO
+INSERT INTO TB_USUARIOS (nome, cpf, email, senha, data_nascimento, status)
+VALUES ('Beatriz Souza', '11122233344', 'beatriz.souza@email.com', 'bia#2026', '1998-07-20', 'INATIVO');
+
+-- Registro 3: BLOQUEADO
+INSERT INTO TB_USUARIOS (nome, cpf, email, senha, data_nascimento, status)
+VALUES ('Fernando Rocha', '99988877766', 'fernando.rocha@email.com', 'rocha_pass', '1980-01-30', 'BLOQUEADO');
+
+-- Registro 4: ATIVO
+INSERT INTO TB_USUARIOS (nome, cpf, email, senha, data_nascimento, status)
+VALUES ('Luciana Alencar', '77766655544', 'luciana.a@email.com', 'lu@acesso', '1994-11-05', 'ATIVO');
+
+-- Registro 5: BLOQUEADO
+INSERT INTO TB_USUARIOS (nome, cpf, email, senha, data_nascimento, status)
+VALUES ('Marcos Pontes', '22233344455', 'marcos.p@email.com', 'mudar@321', '1987-09-15', 'BLOQUEADO');
+
 INSERT INTO TB_USUARIOS (nome, cpf, email, senha, data_nascimento, status)
 VALUES ('Maria Oliveira', '98765432100', 'maria.oliveira@email.com','senhaForte987', '1985-10-30', 'INATIVO');
 
