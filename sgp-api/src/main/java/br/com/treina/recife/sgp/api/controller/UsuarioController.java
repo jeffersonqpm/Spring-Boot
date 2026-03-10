@@ -2,7 +2,8 @@
 package br.com.treina.recife.sgp.api.controller;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
+// import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,12 +33,12 @@ public class UsuarioController {
     @PostMapping // metodo http que chama o requestmapping (api/usuarios)
     // public Usuario cadastrar(@RequestBody Usuario usuario) { // @RequestBody
     // corpo da requisiçao
-    public ResponseEntity<Usuario> cadastrar(@RequestBody Usuario usuario) { // @RequestBody pega o corpo da requisição
+    public ResponseEntity<UsuarioDTO> cadastrar(@RequestBody Usuario usuario) { // @RequestBody pega o corpo da requisição
                                                                              // HTTP e transforma em um objeto java
 
         // return usuarioService.cadastrarUsuario(usuario);
         return ResponseEntity.status(HttpStatus.CREATED)// retorna 2001
-                .body(usuarioService.cadastrarUsuario(usuario));
+                .body(usuarioService.cadastrarUsuario(usuario).toDTO());
     }
 
     @GetMapping
@@ -47,22 +48,22 @@ public class UsuarioController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Usuario> ObterDadosPeloId(@PathVariable Long id) { // @PathVariable a variavel vem no endpoint
-        Optional<Usuario> usuario = usuarioService.obterDadosDoUsuario(id);
+    public ResponseEntity<UsuarioDTO> ObterDadosPeloId(@PathVariable Long id) { // @PathVariable a variavel vem no endpoint
+        UsuarioDTO usuario = usuarioService.obterDadosDoUsuario(id);
 
-        if (usuario.isEmpty()) {
+        if (Objects.isNull(usuario)) {//usuario == null
             return ResponseEntity.notFound().build(); // HTTP 404 Not Found status
 
         }
 
-        return ResponseEntity.ok(usuario.get()); // HTTP 200
+        return ResponseEntity.ok(usuario); // HTTP 200
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<String> excluir(@PathVariable Long id) {
-        Optional<Usuario> usuario = usuarioService.obterDadosDoUsuario(id);
+       UsuarioDTO usuario = usuarioService.obterDadosDoUsuario(id);
 
-        if (usuario.isEmpty()) {
+        if (Objects.isNull(usuario)) {
             return ResponseEntity.notFound().build();
 
         }
@@ -74,15 +75,16 @@ public class UsuarioController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Usuario> atualizar(@PathVariable Long id, @RequestBody Usuario dados) {
-        Optional<Usuario> usuario = usuarioService.obterDadosDoUsuario(id);
+    public ResponseEntity<UsuarioDTO> atualizar(@PathVariable Long id, @RequestBody Usuario dados) {
+        // Optional<Usuario> usuario = usuarioService.obterDadosDoUsuario(id);
+        UsuarioDTO usuario = usuarioService.obterDadosDoUsuario(id);
 
-        if (usuario.isEmpty()) {
+        if (Objects.isNull(usuario)) {
             return ResponseEntity.notFound().build();
 
         }
 
-        return ResponseEntity.ok(usuarioService.atualizarUsuario(id, dados));
+        return ResponseEntity.ok(usuarioService.atualizarUsuario(id, dados).toDTO());
 
     }
 

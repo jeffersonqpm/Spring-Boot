@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 
 import java.time.LocalDate;
+import java.time.Period;
+
+import br.com.treina.recife.sgp.api.dto.UsuarioDTO;
 
 //import jakarta.annotation.Generated;
 
@@ -17,15 +20,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-@Data// cria get sets 
+@Data // cria get sets
 @NoArgsConstructor // CRIA O CONSTRUTUOR SEM ARGUMENTOS
 @AllArgsConstructor // CRIA O CONTRUTOR COM OS ARGUMENTOS
 @Entity(name = "TB_USUARIOS") // DIZ AO SPRING QUE ESSA CLASSE É UMA TABELA.
 
 public class Usuario {
     @Id // DEFINE A CHAVE PRIMÁRIA (PK).
-    @GeneratedValue(strategy = GenerationType.IDENTITY)//DEFINE A CHAVE PRIMÁRIA (PK).
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // DEFINE A CHAVE PRIMÁRIA (PK).
     private Long id;
 
     // VARCHAR(50) NOT NULL
@@ -50,12 +52,27 @@ public class Usuario {
     @Column(nullable = false)
     private LocalDate dataNascimento;
 
-    // NOT NULL e 
+    // NOT NULL e
     @Column(nullable = false)
-    //  mapear um campo de enumeração (enum)
+    // mapear um campo de enumeração (enum)
     @Enumerated(EnumType.STRING)
     private StatusUsuario status;
 
-    
+    public UsuarioDTO toDTO() {
+
+        Period periodo = Period.between(dataNascimento, LocalDate.now());
+
+        String cpfFormatado = cpf.substring(0,3)+ ".***.**-**";
+
+        return new UsuarioDTO(
+                id,
+                nome,
+                cpfFormatado,
+                email,
+                dataNascimento,
+                periodo.getYears(),
+                status);
+
+    }
 
 }
