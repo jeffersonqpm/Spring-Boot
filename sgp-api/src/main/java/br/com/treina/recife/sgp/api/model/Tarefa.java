@@ -2,6 +2,7 @@ package br.com.treina.recife.sgp.api.model;
 
 import java.time.LocalDate;
 
+import br.com.treina.recife.sgp.api.dto.TarefaDTO;
 import br.com.treina.recife.sgp.api.enums.PrioridadeTarefa;
 import br.com.treina.recife.sgp.api.enums.StatusTarefa;
 import jakarta.persistence.Column;
@@ -44,7 +45,7 @@ public class Tarefa {
     @Enumerated(EnumType.STRING)
     private PrioridadeTarefa prioridade;
 
-   @Column(nullable = false)
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusTarefa status;
 
@@ -56,7 +57,20 @@ public class Tarefa {
     @JoinColumn(nullable = false, name = "projeto_id")
     private Projeto projeto;
 
+    public TarefaDTO toDTO() {
 
+              // String cpfFormatado = cpf.substring(0,3)+ ".***.**-**";
 
+        return new TarefaDTO(
+                id,
+                titulo,
+                descricao,
+                dataCriacao,
+                dataConclusao,
+                prioridade,
+                status,
+                usuario,
+                projeto);
+    }
 
 }

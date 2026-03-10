@@ -1,7 +1,7 @@
 package br.com.treina.recife.sgp.api.controller;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.treina.recife.sgp.api.dto.TarefaDTO;
 import br.com.treina.recife.sgp.api.model.Tarefa;
 import br.com.treina.recife.sgp.api.service.TarefaService;
 
@@ -22,64 +23,73 @@ import br.com.treina.recife.sgp.api.service.TarefaService;
 @RequestMapping("api/tarefas")
 public class TarefaController {
 
-
   @Autowired
   private TarefaService tarefaService;
 
+  // @PostMapping
+  // public ResponseEntity<Tarefa> cadastrar(@RequestBody Tarefa tarafa) {
+
+  // return ResponseEntity.status(HttpStatus.CREATED)
+  // .body(tarefaService.cadastrarTarefa(tarafa));
+
+  // }
+
   @PostMapping
-  public ResponseEntity<Tarefa> cadastrar(@RequestBody Tarefa tarafa) {
+  public ResponseEntity<TarefaDTO> cadastrar(@RequestBody Tarefa tarafa) {
 
     return ResponseEntity.status(HttpStatus.CREATED)
-        .body(tarefaService.cadastrarTarefa(tarafa));
+        .body(tarefaService.cadastrarTarefa(tarafa).toDTO());
 
   }
 
-  @GetMapping
-  public ResponseEntity<List<Tarefa>> listar() {
-    return ResponseEntity.ok(tarefaService.listarTarefas());
+  // @GetMapping
+  // public ResponseEntity<List<TarefaDTO>> listar() {
 
+  // return ResponseEntity.ok(tarefaService.listarTarefas());
+
+  // }
+
+  @GetMapping
+  public ResponseEntity<List<TarefaDTO>> listar() {
+
+    return ResponseEntity.ok(tarefaService.listarTarefas());
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Tarefa> obterDadosPorId(@PathVariable Long id) {
+  public ResponseEntity<TarefaDTO> obterDadosPorId(@PathVariable Long id) {
 
-    Optional<Tarefa> tarefa = tarefaService.obeterDadosDeTarefa(id);
+    TarefaDTO tarefa = tarefaService.obeterDadosDeTarefa(id);
 
-    if (tarefa.isEmpty()) {
-
-      return ResponseEntity.notFound().build();
-
-    }
-
-    return ResponseEntity.ok(tarefa.get());
-
+      if(Objects.isNull(tarefa)){
+        return ResponseEntity.notFound().build();
+      }
+      
+      return ResponseEntity.ok(tarefa);
   }
 
   @DeleteMapping("/{id}")
   public ResponseEntity<String> excluir(@PathVariable Long id) {
-    Optional<Tarefa> tarefa = tarefaService.obeterDadosDeTarefa(id);
+    TarefaDTO tarefa = tarefaService.obeterDadosDeTarefa(id);
 
-    if (tarefa.isEmpty()) {
-
-      return ResponseEntity.notFound().build();
-
-    }
+  if(Objects.isNull(tarefa)){
+    return ResponseEntity.notFound().build();
+  }
 
     tarefaService.excluirTarefa(id);
 
-    return ResponseEntity.noContent().build(); //204
+    return ResponseEntity.noContent().build(); // 204
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<Tarefa> atualizar(@PathVariable Long id, @RequestBody Tarefa dadosTarefa) {
-    Optional<Tarefa> tarefa = tarefaService.obeterDadosDeTarefa(id);
+  public ResponseEntity<TarefaDTO> atualizar(@PathVariable Long id, @RequestBody Tarefa dadosTarefa) {
+    TarefaDTO tarefa = tarefaService.obeterDadosDeTarefa(id);
 
-    if (tarefa.isEmpty()) {
+    if (Objects.isNull(tarefa)) {
 
-      return ResponseEntity.notFound().build();//404
+      return ResponseEntity.notFound().build();// 404
 
     }
-    return ResponseEntity.ok(tarefaService.atualizaTarefa(id, dadosTarefa));//200
+    return ResponseEntity.ok(tarefaService.atualizaTarefa(id, dadosTarefa).toDTO());// 200
   }
 
 }

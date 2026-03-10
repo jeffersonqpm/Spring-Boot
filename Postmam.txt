@@ -1,0 +1,50 @@
+  🟢🟢🟢 Usuário
+
+	{
+	
+		"nome": "Jefferson Queiroz Pereira de Melo",
+		"cpf": "09876556789",
+		"email": "jefferson@gmail.com",
+		"senha": "jeff1234",
+		"dataNascimento": "1989-09-28",
+		"status": "ATIVO"
+	}
+
+    🟢🟢🟢 PROJETOS 
+
+    { 
+
+    "nome": "E-commerce B2B",
+    "descricao": "Desenvolvimento de plataforma de vendas.",
+    "dataInicio": "2026-03-06",
+    "dataFinal": "2026-03-11",
+    "status": "CONCLUIDO",
+    "responsavel":	{
+			
+		"id": 2,
+		"nome": "Jefferson Queiroz Pereira de Melo",
+		"cpf": "09876556789",
+		"email": "jefferson@gmail.com",
+		"senha": "jeff1234",
+		"dataNascimento": "1989-09-28",
+		"status": "ATIVO"
+
+}
+}
+
+  🟢🟢🟢 TAREFAS
+
+  {
+    "titulo": "TESTE JEFFERSON QUEIOROZX",
+    "descricao": "Revisão do código para evitar bugsSSSSSS",
+    "dataCriacao": "2026-09-28",
+    "dataConclusao": "2026-09-30",
+	"prioridade":"BAIXA",
+    "status": "PENDENTE",
+    "usuario": {
+        "id": 1
+    },
+    "projeto": {
+        "id": 3
+    }
+}
