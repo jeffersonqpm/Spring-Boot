@@ -57,6 +57,8 @@ public class Tarefa {
     @JoinColumn(nullable = false, name = "projeto_id")
     private Projeto projeto;
 
+    
+
     public TarefaDTO toDTO() {
 
               // String cpfFormatado = cpf.substring(0,3)+ ".***.**-**";

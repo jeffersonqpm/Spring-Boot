@@ -1,8 +1,11 @@
 package br.com.treina.recife.sgp.api.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import br.com.treina.recife.sgp.api.dto.ProjetoDTO;
 import br.com.treina.recife.sgp.api.enums.StatusProjeto;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -12,7 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -50,9 +53,27 @@ public class Projeto {
 
     @ManyToOne // relação com usuario
     // @OneToOne so pode ser um usuario para cada projeto
-    @JoinColumn(nullable = false, name="usuario_resp_id")
+    @JoinColumn(nullable = false, name = "usuario_resp_id")
     private Usuario responsavel;
 
+    /*
+    Apagar um projeto, todas as tarefas vinculadas a ele sejam apagadas
+    automaticamente
+    */
+    // @OneToMany(mappedBy = "projeto", cascade = CascadeType.ALL, orphanRemoval = true)
+    // private List<Tarefa> tarefas;
 
+    public ProjetoDTO toDTO() {
+
+        return new ProjetoDTO(
+                id,
+                nome,
+                descricao,
+                dataInicio,
+                dataFinal,
+                status,
+                responsavel);
+
+    }
 
 }

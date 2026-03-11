@@ -1,4 +1,4 @@
-
+DROP TABLE IF EXISTS TB_TAREFAS, TB_PROJETOS, TB_USUARIOs;
 
 🟢Usuario
 SELECT id, nome "Nome", cpf "CPF", email "E-MAIL",data_nascimento "Data_nascimento",  status "Status" FROM tb_usuarios;

@@ -1,35 +1,57 @@
 package br.com.treina.recife.sgp.api.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.treina.recife.sgp.api.dto.ProjetoDTO;
 import br.com.treina.recife.sgp.api.model.Projeto;
 import br.com.treina.recife.sgp.api.repository.ProjetoRepository;
 
 @Service
 public class ProjetoService {
 
-   
-
     @Autowired
     private ProjetoRepository projetoRepository;
 
     // SELECT * FROM TB_PROJETOS
 
-    public List<Projeto> listaProjetos() {
+    public List<ProjetoDTO> listaProjetos() {
 
-        return projetoRepository.findAll();
+        List<Projeto> projetos = projetoRepository.findAll();
+
+        List<ProjetoDTO> dtos = new ArrayList<>();
+
+        for (Projeto projeto : projetos) {
+
+            dtos.add(projeto.toDTO());
+
+        }
+
+        return dtos;
 
     }
 
     // SELECT * FROM TB_PROJETOS WHERE ID = ?
 
-    public Optional<Projeto> obeterDadosDoUsuario(Long id) {
+    // public Optional<Projeto> obeterDadosDoUsuario(Long id) {
 
-        return projetoRepository.findById(id);
+    // return projetoRepository.findById(id);
+    // }
+
+    public ProjetoDTO obterDadosDeProjetos(long id) {
+
+        Optional<Projeto> projeto = projetoRepository.findById(id);
+
+        if (projeto.isPresent()) {
+            return projeto.get().toDTO();
+
+        }
+        return null;
+
     }
 
     // INSERT INTO TB_PROJETOS VALUES ...

@@ -3,8 +3,8 @@
 
 -- spring.jpa.defer-datasource-initialization=true
 -- spring.sql.init.mode=always
-
 -- Registro 1: ATIVO
+
 INSERT INTO TB_USUARIOS (nome, cpf, email, senha, data_nascimento, status)
 VALUES ('Ricardo Sanches', '55544433322', 'ricardo.sanches@email.com', 'senha123', '1992-04-12', 'ATIVO');
 

@@ -60,20 +60,20 @@ public class TarefaController {
 
     TarefaDTO tarefa = tarefaService.obeterDadosDeTarefa(id);
 
-      if(Objects.isNull(tarefa)){
-        return ResponseEntity.notFound().build();
-      }
-      
-      return ResponseEntity.ok(tarefa);
+    if (Objects.isNull(tarefa)) {
+      return ResponseEntity.notFound().build();
+    }
+
+    return ResponseEntity.ok(tarefa);
   }
 
   @DeleteMapping("/{id}")
   public ResponseEntity<String> excluir(@PathVariable Long id) {
     TarefaDTO tarefa = tarefaService.obeterDadosDeTarefa(id);
 
-  if(Objects.isNull(tarefa)){
-    return ResponseEntity.notFound().build();
-  }
+    if (Objects.isNull(tarefa)) {
+      return ResponseEntity.notFound().build();
+    }
 
     tarefaService.excluirTarefa(id);
 
