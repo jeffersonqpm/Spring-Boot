@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.treina.recife.sgp.api.dto.ProjetoDTO;
+import br.com.treina.recife.sgp.api.dto.UsuarioDTO;
 import br.com.treina.recife.sgp.api.model.Projeto;
 import br.com.treina.recife.sgp.api.service.ProjetoService;
+import br.com.treina.recife.sgp.api.service.UsuarioService;
+
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
@@ -26,6 +29,8 @@ public class ProjetoController {
     @Autowired
     private ProjetoService projetoService;
     // ProjetoService projetoService = new ProjetoService();
+    @Autowired
+    private UsuarioService usuarioService;
 
     @PostMapping
     public ResponseEntity<ProjetoDTO> cadastrar(@RequestBody Projeto projeto) {
@@ -84,4 +89,18 @@ public class ProjetoController {
 
         return ResponseEntity.ok(projetoService.atualizaProjeto(id, dadosProjeto).toDTO());
     }
+
+    // @GetMapping("/usuario/{id}")
+    // public ResponseEntity<List<Projeto>> listarPeloResponsavel(@PathVariable("id") Long idUsuario){
+
+    //     UsuarioDTO usuario = usuarioService.obterDadosUsuario(idUsuario);
+
+    //     if(Objects.isNull(usuario)){
+    //         return ResposeEntity.notFound().build();
+    //     }
+        
+    //     return ResposeEntity.ok(projetoService.listarProjetosDeUmUsuario(idUsuario));
+        
+
+    // }
 }

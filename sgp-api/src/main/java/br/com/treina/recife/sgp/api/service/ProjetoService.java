@@ -73,4 +73,9 @@ public class ProjetoService {
     public void excluirTarefa(Long id) {
         projetoRepository.deleteById(id);
     }
+
+    //select * from tb_projetos where usurio_resp_id = ?
+    public List<Projeto> listarProjetoDeUmUsuario(Long idUsuario){
+        return projetoRepository.findByResponsavel_id(idUsuario);
+    }
 }
