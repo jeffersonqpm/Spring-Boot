@@ -12,9 +12,9 @@ public record ProjetoDTO(
         Long id,
         String nome,
         String descricao,
-         @JsonFormat(pattern = "dd/MM/yyyy")
-         LocalDate dataInicio,
-         @JsonFormat(pattern = "dd/MM/yyyy")
+        @JsonFormat(pattern = "dd/MM/yyyy")
+        LocalDate dataInicio,
+        @JsonFormat(pattern = "dd/MM/yyyy")
         LocalDate dataFinal,
         StatusProjeto status,
         Usuario responsavel

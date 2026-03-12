@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.treina.recife.sgp.api.dto.CredenciaisDTO;
 import br.com.treina.recife.sgp.api.dto.UsuarioDTO;
 import br.com.treina.recife.sgp.api.model.Usuario;
 import br.com.treina.recife.sgp.api.service.UsuarioService;
@@ -33,8 +35,9 @@ public class UsuarioController {
     @PostMapping // metodo http que chama o requestmapping (api/usuarios)
     // public Usuario cadastrar(@RequestBody Usuario usuario) { // @RequestBody
     // corpo da requisiçao
-    public ResponseEntity<UsuarioDTO> cadastrar(@RequestBody Usuario usuario) { // @RequestBody pega o corpo da requisição
-                                                                             // HTTP e transforma em um objeto java
+    public ResponseEntity<UsuarioDTO> cadastrar(@RequestBody Usuario usuario) { // @RequestBody pega o corpo da
+                                                                                // requisição
+                                                                                // HTTP e transforma em um objeto java
 
         // return usuarioService.cadastrarUsuario(usuario);
         return ResponseEntity.status(HttpStatus.CREATED)// retorna 2001
@@ -48,10 +51,11 @@ public class UsuarioController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<UsuarioDTO> ObterDadosPeloId(@PathVariable Long id) { // @PathVariable a variavel vem no endpoint
+    public ResponseEntity<UsuarioDTO> ObterDadosPeloId(@PathVariable Long id) { // @PathVariable a variavel vem no
+                                                                                // endpoint
         UsuarioDTO usuario = usuarioService.obterDadosDoUsuario(id);
 
-        if (Objects.isNull(usuario)) {//usuario == null
+        if (Objects.isNull(usuario)) {// usuario == null
             return ResponseEntity.notFound().build(); // HTTP 404 Not Found status
 
         }
@@ -61,7 +65,7 @@ public class UsuarioController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<String> excluir(@PathVariable Long id) {
-       UsuarioDTO usuario = usuarioService.obterDadosDoUsuario(id);
+        UsuarioDTO usuario = usuarioService.obterDadosDoUsuario(id);
 
         if (Objects.isNull(usuario)) {
             return ResponseEntity.notFound().build();
@@ -87,5 +91,33 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.atualizarUsuario(id, dados).toDTO());
 
     }
+    
+        @GetMapping("/busca")
+    public ResponseEntity<UsuarioDTO> consultarPeloCpf(@RequestParam String cpf) {
+        UsuarioDTO usuario = usuarioService.buscarUsuarioPeloCpf(cpf);
+
+        if (Objects.isNull(usuario)) {
+
+            return ResponseEntity.notFound().build();
+
+        }
+
+        return ResponseEntity.ok(usuario);
+    }
+
+    @GetMapping("/buscaPorCredencias")
+    public ResponseEntity<UsuarioDTO> consultarPelasCredencias(@RequestBody CredenciaisDTO credencias){
+        UsuarioDTO usuario = usuarioService.buscarUsuarioPeloEmailSenha(credencias.email(), credencias.senha());
+
+        if(Objects.isNull(usuario)){
+
+            return ResponseEntity.notFound().build();
+
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
+    
 
 }
