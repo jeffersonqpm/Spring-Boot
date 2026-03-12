@@ -80,27 +80,26 @@ public class ProjetoController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<ProjetoDTO> atualizar(@PathVariable Long id, @RequestBody Projeto dadosProjeto) {
+    public ResponseEntity<ProjetoDTO> atualizar(@PathVariable Long id, @RequestBody Projeto dados) {
         ProjetoDTO projeto = projetoService.obterDadosDeProjetos(id);
 
         if (Objects.isNull(projeto)) {
             return ResponseEntity.notFound().build();
         }
 
-        return ResponseEntity.ok(projetoService.atualizaProjeto(id, dadosProjeto).toDTO());
+        return ResponseEntity.ok(projetoService.atualizaProjeto(id, dados).toDTO());
     }
 
-    // @GetMapping("/usuario/{id}")
-    // public ResponseEntity<List<Projeto>> listarPeloResponsavel(@PathVariable("id") Long idUsuario){
+    @GetMapping("usuario/{id}")
+    public ResponseEntity<List<Projeto>> listarResponsavel(@PathVariable("id") Long idUsuario){
+        UsuarioDTO usuario = usuarioService.obterDadosDoUsuario(idUsuario);
 
-    //     UsuarioDTO usuario = usuarioService.obterDadosUsuario(idUsuario);
+        if(Objects.isNull(usuario)){
 
-    //     if(Objects.isNull(usuario)){
-    //         return ResposeEntity.notFound().build();
-    //     }
-        
-    //     return ResposeEntity.ok(projetoService.listarProjetosDeUmUsuario(idUsuario));
-        
+            return ResponseEntity.notFound().build();
 
-    // }
+        }
+        return ResponseEntity.ok(projetoService.listarProjetoDeUmUsuario(idUsuario));
+    }
+
 }
