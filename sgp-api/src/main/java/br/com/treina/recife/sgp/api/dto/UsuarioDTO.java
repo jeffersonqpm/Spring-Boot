@@ -13,7 +13,7 @@ public record UsuarioDTO(
         String cpf,
         String email,
         @JsonFormat(pattern = "dd/MM/yyyy")
-         LocalDate dataNascimento,
+        LocalDate dataNascimento,
         Integer idade,
         StatusUsuario status) {
 
