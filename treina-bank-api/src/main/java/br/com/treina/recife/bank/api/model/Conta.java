@@ -1,5 +1,6 @@
 package br.com.treina.recife.bank.api.model;
 
+// import br.com.treina.recife.bank.api.DTO.ContaDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
@@ -8,7 +9,7 @@ import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
-@Embeddable // os atributos da classa sera inseridos em CC e CP
+@Embeddable // os atributos da classa sera inseridos em CC e CP (Herança)
 public class Conta {
 
     @Column(nullable = false)
@@ -29,5 +30,16 @@ public class Conta {
     @ManyToOne
     @JoinColumn(nullable = false, name = "titular_id")
     private Titular titular;
+
+    // public ContaDTO toDTO() {
+
+    //     return new ContaDTO(
+    //             idBanco,
+    //             numAgencia,
+    //             numConta,
+    //             digito,
+    //             saldo,
+    //             titular);
+    // }
 
 }
