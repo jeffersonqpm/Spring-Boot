@@ -9,7 +9,7 @@ import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
-@Embeddable // os atributos da classa sera inseridos em CC e CP (Herança)
+@Embeddable // os atributos da classa sera inseridos em CC e CP (Herança) embédibol
 public class Conta {
 
     @Column(nullable = false)
