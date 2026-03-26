@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.treina.recife.sgp.api.dto.DadosTarefaDTO;
 import br.com.treina.recife.sgp.api.dto.TarefaDTO;
 import br.com.treina.recife.sgp.api.model.Tarefa;
 import br.com.treina.recife.sgp.api.service.TarefaService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("api/tarefas")
@@ -34,8 +36,16 @@ public class TarefaController {
 
   // }
 
-  @PostMapping
-  public ResponseEntity<TarefaDTO> cadastrar(@RequestBody Tarefa tarafa) {
+  // @PostMapping
+  // public ResponseEntity<TarefaDTO> cadastrar(@RequestBody Tarefa tarafa) {
+
+  //   return ResponseEntity.status(HttpStatus.CREATED)
+  //       .body(tarefaService.cadastrarTarefa(tarafa).toDTO());
+
+  // }
+
+    @PostMapping
+  public ResponseEntity<TarefaDTO> cadastrar( @Valid @RequestBody DadosTarefaDTO tarafa) {
 
     return ResponseEntity.status(HttpStatus.CREATED)
         .body(tarefaService.cadastrarTarefa(tarafa).toDTO());
@@ -81,7 +91,7 @@ public class TarefaController {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<TarefaDTO> atualizar(@PathVariable Long id, @RequestBody Tarefa dadosTarefa) {
+  public ResponseEntity<TarefaDTO> atualizar(@Valid @PathVariable Long id, @RequestBody DadosTarefaDTO dadosTarefa) {
     TarefaDTO tarefa = tarefaService.obeterDadosDeTarefa(id);
 
     if (Objects.isNull(tarefa)) {

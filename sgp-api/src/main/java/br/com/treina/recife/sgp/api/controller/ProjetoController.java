@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.treina.recife.sgp.api.dto.DadosProjetoDTO;
 import br.com.treina.recife.sgp.api.dto.ProjetoDTO;
 import br.com.treina.recife.sgp.api.dto.UsuarioDTO;
 import br.com.treina.recife.sgp.api.model.Projeto;
 import br.com.treina.recife.sgp.api.service.ProjetoService;
 import br.com.treina.recife.sgp.api.service.UsuarioService;
+import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -32,8 +34,15 @@ public class ProjetoController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @PostMapping
-    public ResponseEntity<ProjetoDTO> cadastrar(@RequestBody Projeto projeto) {
+    // @PostMapping
+    // public ResponseEntity<ProjetoDTO> cadastrar(@RequestBody Projeto projeto) {
+
+    //     return ResponseEntity.status(HttpStatus.CREATED)
+    //             .body(projetoService.cadastraProjeto(projeto).toDTO());// retorna 2001
+    // }
+
+        @PostMapping
+    public ResponseEntity<ProjetoDTO> cadastrar(@Valid @RequestBody DadosProjetoDTO projeto) {
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(projetoService.cadastraProjeto(projeto).toDTO());// retorna 2001
@@ -80,7 +89,7 @@ public class ProjetoController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<ProjetoDTO> atualizar(@PathVariable Long id, @RequestBody Projeto dados) {
+    public ResponseEntity<ProjetoDTO> atualizar(@Valid @PathVariable Long id, @RequestBody DadosProjetoDTO dados) {
         ProjetoDTO projeto = projetoService.obterDadosDeProjetos(id);
 
         if (Objects.isNull(projeto)) {

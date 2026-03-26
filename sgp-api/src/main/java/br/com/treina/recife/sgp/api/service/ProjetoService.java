@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.treina.recife.sgp.api.dto.DadosProjetoDTO;
 import br.com.treina.recife.sgp.api.dto.ProjetoDTO;
 import br.com.treina.recife.sgp.api.model.Projeto;
 import br.com.treina.recife.sgp.api.repository.ProjetoRepository;
@@ -56,13 +57,18 @@ public class ProjetoService {
 
     // INSERT INTO TB_PROJETOS VALUES ...
 
-    public Projeto cadastraProjeto(Projeto projeto) {
-        return projetoRepository.save(projeto);
+    // public Projeto cadastraProjeto(Projeto projeto) {
+    //     return projetoRepository.save(projeto);
+    // }
+
+        public Projeto cadastraProjeto(DadosProjetoDTO projeto) {
+        return projetoRepository.save(projeto.toModel());
     }
 
     // UPDATE TB_USUARIOS .. WHERE ID = ?
 
-    public Projeto atualizaProjeto(Long id, Projeto projeto) {
+    public Projeto atualizaProjeto(Long id, DadosProjetoDTO dados) {
+        Projeto projeto = dados.toModel();
 
         projeto.setId(id);
         return projetoRepository.save(projeto);
