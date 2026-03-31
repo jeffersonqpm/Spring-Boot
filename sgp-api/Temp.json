@@ -1,43 +1,31 @@
 // http://localhost:8080/api/usuarios
-
 {
-
-//Cadastrar usuário
-
-    "nome":"Jefferson",
+    //Cadastrar usuário
+    "nome": "Jefferson",
     "cpf": "07656541324",
-    "email":"jefferson@gmail.com",
-    "senha":"12345678",
-    "dataNascimento":"1989-09-28",
+    "email": "jefferson@gmail.com",
+    "senha": "12345678",
+    "dataNascimento": "1989-09-28",
     "status": "ATIVO"
-    
-
 }
-
 // PROJETOS
-
-{ 
-
+{
     "nome": "Projeto treinaAA",
     "descricao": "PrEstudoA de java e springboot",
     "dataInicio": "2026-03-06",
     "dataFinal": "2026-03-11",
     "status": "CONCLUIDO",
-    "responsavel":	{
-			
-		"id":1,
-    "nome":"Jefferson",
-    "cpf": "07656541324",
-    "email":"jefferson@gmail.com",
-    "senha":"12345678",
-    "dataNascimento":"1989-09-28",
-    "status": "ATIVO"   
-
+    "responsavel": {
+        "id": 1,
+        "nome": "Jefferson",
+        "cpf": "07656541324",
+        "email": "jefferson@gmail.com",
+        "senha": "12345678",
+        "dataNascimento": "1989-09-28",
+        "status": "ATIVO"
+    }
 }
-}
-
 // TRAFEFAS
-
 {
     "titulo": "Finalizar documentação da API",
     "descricao": "Escrever os endpoints principais no Swagger e validar com o time de QA.",
@@ -53,4 +41,71 @@
     }
 }
 
-// jefferson
+
+
+// NOVO
+// ######################### TAREFAS ##############################################
+// CADASTRAR
+{
+    "titulo": "Testando o meu",
+    "descricao": "Testando meu codigo",
+    "dataCriacao": "2026-09-28",
+    "dataConclusao": "2026-09-30",
+    "prioridade": "BAIXA",
+    "status": "PENDENTE",
+    "usuarioId": 1,
+    "projetoId": 1
+}
+// ATUALIZAR
+{
+    "id": 1,
+    "titulo": "jqinfo",
+    "descricao": "Studio ",
+    "dataCriacao": "2026-03-18",
+    "dataConclusao": "2026-03-19",
+    "prioridade": "ALTA",
+    "status": "PENDENTE",
+    "usuarioId": 3,
+    "projetoId": 3
+}
+//############################# PROJETOS #############################################
+// CADASTRAR
+{
+    "nome": "E-commerce B2C",
+    "descricao": "Desenvolvimento de plataforma de vendas para B2C",
+    "dataInicio": "2026-03-01",
+    "dataFinal": "2026-03-27",
+    "status": "ATIVO",
+    "responsavelId": 1
+}
+// ATUALIZAR
+{
+    "nome": "Expanção Infra_222222",
+    "descricao": "Teste Jefferson Queiroz",
+    "dataInicio": "2026-03-03",
+    "dataFinal": "2026-03-18",
+    "status": "CONCLUIDO",
+    "responsavelId": 3
+}
+
+########################## USUARIOS #########################################
+
+
+// CADASTRAR
+{
+    "nome": "Deloitte",
+    "cpf": "90846510289",
+    "email": "maria.qpm@gmail.com",
+    "senha": "maria321",
+    "dataNascimento": "1989-09-12",
+    "status": "BLOQUEADO"
+}
+// ATUALIZAR
+{
+    "nome": "Ana Luiza",
+    "cpf": "09876556789",
+    "email": "ana.luiza@gmail.com",
+    "senha": "ana1324",
+    "dataNascimento": "1989-09-28",
+    "status": "BLOQUEADO"
+}

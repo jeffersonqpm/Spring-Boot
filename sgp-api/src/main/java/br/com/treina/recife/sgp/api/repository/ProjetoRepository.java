@@ -12,7 +12,7 @@ public interface ProjetoRepository extends JpaRepository<Projeto, Long>{
 
     List<Projeto> findByResponsavel_id(Long id);
 
-    // FAZER: nome, data, 
+    // FAZER: nome, data,
 
 
 

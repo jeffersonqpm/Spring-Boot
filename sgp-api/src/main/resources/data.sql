@@ -47,17 +47,6 @@ VALUES ('2024-04-10', '2024-03-01', 'Capacitação da equipe em novas tecnologia
 INSERT INTO TB_PROJETOS (data_final, data_inicio, descricao, nome, status, usuario_resp_id)
 VALUES ('2024-12-20', '2024-01-15', 'Upgrade de servidores e rede local.', 'Expansão Infra', 'ATIVO', 3);
 
-INSERT INTO TB_TAREFAS (titulo, descricao, data_criacao, data_conclusao, prioridade, status, usuario_id, projeto_id)
+-- INSERT INTO TB_TAREFAS (titulo, descricao, data_criacao, data_conclusao, prioridade, status, usuario_id, projeto_id)
+INSERT INTO TB_TAREFAS (titulo, descricao, data_criacao, data_conclusao, prioridade, status, usuarioiD, projetoiD)
 VALUES ('Analisar requisitos do sistema', 'Revisar documentação inicial e levantar requisitos com o cliente.', '2026-03-01', '2026-03-16', 'ALTA', 'CONCLUIDA', 1, 1);
-
-INSERT INTO TB_TAREFAS (titulo, descricao, data_criacao, data_conclusao, prioridade, status, usuario_id, projeto_id)
-VALUES ('Desenvolver módulo de login', 'Implementar autenticação e geração de tokens JWT.', '2026-03-05', '2026-03-15', 'MEDIA', 'PENDENTE', 2, 1);
-
-INSERT INTO TB_TAREFAS (titulo, descricao, data_criacao, data_conclusao, prioridade, status, usuario_id, projeto_id)
-VALUES ('Gerar documentação inicial', 'Criar README e documentação do ambiente de desenvolvimento.', '2026-02-10', '2026-02-12', 'BAIXA', 'CONCLUIDA', 3, 2);
-
-INSERT INTO TB_TAREFAS (titulo, descricao, data_criacao, data_conclusao, prioridade, status, usuario_id, projeto_id)
-VALUES ('Criar protótipo de interface', 'Prototipação das telas principais utilizando Figma.', '2026-01-20', '2026-03-11', 'ALTA', 'PENDENTE', 1, 3);
-
-INSERT INTO TB_TAREFAS (titulo, descricao, data_criacao, data_conclusao, prioridade, status, usuario_id, projeto_id)
-VALUES ('Configurar ambiente de testes', 'Preparar ambiente para testes automatizados e pipelines.', '2026-03-08', NULL, 'MEDIA', 'CONCLUIDA', 2, 2);

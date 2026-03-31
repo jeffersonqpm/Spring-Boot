@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotNull;
 
 public record DadosProjetoDTO(
 
-        @NotBlank 
+        @NotBlank
         String nome,
 
         String descricao,
@@ -31,6 +31,7 @@ public record DadosProjetoDTO(
     public Projeto toModel() {
 
         Projeto projeto = new Projeto();
+
         projeto.setNome(nome);
         projeto.setDescricao(descricao);
         projeto.setDataInicio(dataInicio);
@@ -38,7 +39,6 @@ public record DadosProjetoDTO(
         projeto.setStatus(status);
 
         Usuario usuario = new Usuario();
-
         usuario.setId(responsavelId);
         projeto.setResponsavel(usuario);
 

@@ -37,11 +37,11 @@ public class ProjetoController {
     // @PostMapping
     // public ResponseEntity<ProjetoDTO> cadastrar(@RequestBody Projeto projeto) {
 
-    //     return ResponseEntity.status(HttpStatus.CREATED)
-    //             .body(projetoService.cadastraProjeto(projeto).toDTO());// retorna 2001
+    // return ResponseEntity.status(HttpStatus.CREATED)
+    // .body(projetoService.cadastraProjeto(projeto).toDTO());// retorna 2001
     // }
 
-        @PostMapping
+    @PostMapping
     public ResponseEntity<ProjetoDTO> cadastrar(@Valid @RequestBody DadosProjetoDTO projeto) {
 
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -58,7 +58,7 @@ public class ProjetoController {
         return ResponseEntity.ok(projetoService.listaProjetos()); // retorna 200
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ProjetoDTO> obterDadosPorId(@PathVariable Long id) {
 
         ProjetoDTO projeto = projetoService.obterDadosDeProjetos(id);
@@ -69,10 +69,11 @@ public class ProjetoController {
 
         }
         return ResponseEntity.ok(projeto);
+        // return ResponseEntity.ok(projeto.get());
 
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> excluir(@PathVariable Long id) {
         ProjetoDTO projeto = projetoService.obterDadosDeProjetos(id);
 
@@ -88,8 +89,8 @@ public class ProjetoController {
 
     }
 
-    @PutMapping("{id}")
-    public ResponseEntity<ProjetoDTO> atualizar(@Valid @PathVariable Long id, @RequestBody DadosProjetoDTO dados) {
+    @PutMapping("/{id}")
+    public ResponseEntity<ProjetoDTO> atualizar(@PathVariable Long id,@Valid @RequestBody DadosProjetoDTO dados) {
         ProjetoDTO projeto = projetoService.obterDadosDeProjetos(id);
 
         if (Objects.isNull(projeto)) {
@@ -99,11 +100,11 @@ public class ProjetoController {
         return ResponseEntity.ok(projetoService.atualizaProjeto(id, dados).toDTO());
     }
 
-    @GetMapping("usuario/{id}")
-    public ResponseEntity<List<Projeto>> listarResponsavel(@PathVariable("id") Long idUsuario){
+    @GetMapping("/usuario/{id}")
+    public ResponseEntity<List<Projeto>> listarResponsavel(@PathVariable("id") Long idUsuario) {
         UsuarioDTO usuario = usuarioService.obterDadosDoUsuario(idUsuario);
 
-        if(Objects.isNull(usuario)){
+        if (Objects.isNull(usuario)) {
 
             return ResponseEntity.notFound().build();
 

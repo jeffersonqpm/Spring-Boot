@@ -11,25 +11,26 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record DadosTarefaDTO(
-        @NotBlank String titulo,
+        @NotBlank
+        String titulo,
 
         String descricao,
 
-        @NotNull 
+        @NotNull
         LocalDate dataCriacao,
 
-        @NotNull 
+        @NotNull
         LocalDate dataConclusao,
 
-        @NotNull 
+        @NotNull
         PrioridadeTarefa prioridade,
 
-        @NotNull 
+        @NotNull
         StatusTarefa status,
 
         Long usuarioId,
 
-        @NotNull 
+        @NotNull
         Long projetoId
 
 ) {

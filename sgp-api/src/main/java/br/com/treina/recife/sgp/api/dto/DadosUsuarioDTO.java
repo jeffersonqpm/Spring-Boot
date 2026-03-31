@@ -11,15 +11,20 @@ import jakarta.validation.constraints.Size;
 
 public record DadosUsuarioDTO(
 
-        @NotBlank @Size(min = 3, max = 50) String nome,
+        @NotBlank @Size(min = 3, max = 50)
+        String nome,
 
-        @NotBlank @Size(max = 11) String cpf,
+        @NotBlank @Size(max = 11)
+        String cpf,
 
-        @NotBlank @Email String email,
+        @NotBlank @Email
+        String email,
 
-        @NotBlank @Size(max = 19) String senha,
+        @NotBlank @Size(max = 19)
+        String senha,
 
-        @NotNull LocalDate dataNascimento,
+        @NotNull
+        LocalDate dataNascimento,
 
         @NotNull StatusUsuario status
 
