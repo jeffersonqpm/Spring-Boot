@@ -11,6 +11,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.treina.recife.sgp.api.dto.DadosUsuarioDTO;
 import br.com.treina.recife.sgp.api.dto.UsuarioDTO;
 import br.com.treina.recife.sgp.api.model.Usuario;
 import br.com.treina.recife.sgp.api.repository.UsuarioRepository;
@@ -65,15 +66,22 @@ public class UsuarioService {
 
     // INSERT INTO TB_USUARIOS VALUES ...
 
-    public Usuario cadastrarUsuario(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    // public Usuario cadastrarUsuario(Usuario usuario) {
+    //     return usuarioRepository.save(usuario);
+
+    // }
+
+        public Usuario cadastrarUsuario(DadosUsuarioDTO usuario) {
+        return usuarioRepository.save(usuario.toModel());
 
     }
 
     // UPDATE TB_USUARIOS .. WHERE ID = ?
 
-    public Usuario atualizarUsuario(Long id, Usuario usuario) {
-        usuario.setId(id);
+    public Usuario atualizarUsuario(Long id, DadosUsuarioDTO dados) {
+
+        Usuario usuario = dados.toModel();
+        usuario.setId(id);// grante que o usario vai ser atuliazado e nao criado um novo
         return usuarioRepository.save(usuario);
 
     }
@@ -81,6 +89,29 @@ public class UsuarioService {
     // DELETE FROM TB_USUARIOS WHERE ID = ?
     public void excluirUsuario(Long id) {
         usuarioRepository.deleteById(id);
+    }
+
+    // SELECT * FROM TB_USUARIOS WHERE CPF = ?
+
+    public UsuarioDTO buscarUsuarioPeloCpf(String cpf) {
+        Optional<Usuario> usuario = usuarioRepository.findByCpf(cpf);
+
+        if (usuario.isPresent()) {
+            return usuario.get().toDTO();
+
+        }
+        return null;
+
+    }
+
+    public UsuarioDTO buscarUsuarioPeloEmailSenha(String email, String senha) {
+        Optional<Usuario> usuario = usuarioRepository.findByEmailAndSenha(email, senha);
+
+        if (usuario.isPresent()) {
+            return usuario.get().toDTO();
+
+        }
+        return null;
     }
 
 }

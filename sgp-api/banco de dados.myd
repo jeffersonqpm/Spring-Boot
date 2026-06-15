@@ -14,7 +14,7 @@ tb_usuarios us
 inner JOIN tb_projetos pj on us.id = pj.id
 ORDER BY 1;
 
-🟢
+🟢jeff
 🟢
 
 
