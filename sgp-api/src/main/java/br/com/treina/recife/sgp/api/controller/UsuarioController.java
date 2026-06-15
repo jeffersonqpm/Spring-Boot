@@ -8,6 +8,7 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ import br.com.treina.recife.sgp.api.service.UsuarioService;
 
 @RestController // faz a conversão Java -> Jason para enviar a resposta
 @RequestMapping("/api/usuarios")
+@CrossOrigin
 public class UsuarioController {
     // teste
 

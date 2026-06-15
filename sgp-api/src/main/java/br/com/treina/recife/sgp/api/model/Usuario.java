@@ -6,6 +6,8 @@ import jakarta.persistence.EnumType;
 import java.time.LocalDate;
 import java.time.Period;
 
+
+
 import br.com.treina.recife.sgp.api.dto.UsuarioDTO;
 
 //import jakarta.annotation.Generated;
