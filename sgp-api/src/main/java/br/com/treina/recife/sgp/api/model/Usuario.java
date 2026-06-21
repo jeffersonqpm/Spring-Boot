@@ -37,9 +37,10 @@ public class Usuario {
     private String nome;
 
     // varchar(11) NOT NULL UNIQUE
-    // @Column(nullable = false, length = 11, unique = true);
-    @Column(nullable = false, length = 11)
+    @Column(nullable = false, length = 11, unique = true)
     private String cpf;
+
+    
     // VARCHAR(255) NOT NULL UNIQUE
     // @Column(nullable = false, unique = true)
     @Column(nullable = false)

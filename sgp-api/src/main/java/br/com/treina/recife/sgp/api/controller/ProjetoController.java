@@ -21,11 +21,8 @@ import br.com.treina.recife.sgp.api.dto.UsuarioDTO;
 import br.com.treina.recife.sgp.api.model.Projeto;
 import br.com.treina.recife.sgp.api.service.ProjetoService;
 import br.com.treina.recife.sgp.api.service.UsuarioService;
-<<<<<<< HEAD
-=======
-import jakarta.validation.Valid;
->>>>>>> 782b37417b11e498553f99d7a1e81ef345e25340
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
@@ -35,48 +32,29 @@ public class ProjetoController {
 
     @Autowired
     private ProjetoService projetoService;
-    // ProjetoService projetoService = new ProjetoService();
+
     @Autowired
     private UsuarioService usuarioService;
 
-    // @PostMapping
-    // public ResponseEntity<ProjetoDTO> cadastrar(@RequestBody Projeto projeto) {
-
-    // return ResponseEntity.status(HttpStatus.CREATED)
-    // .body(projetoService.cadastraProjeto(projeto).toDTO());// retorna 2001
-    // }
-
-
     @PostMapping
     public ResponseEntity<ProjetoDTO> cadastrar(@Valid @RequestBody DadosProjetoDTO projeto) {
-
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(projetoService.cadastraProjeto(projeto).toDTO());// retorna 2001
+                .body(projetoService.cadastraProjeto(projeto).toDTO());
     }
-
-    // @GetMapping
-    // public ResponseEntity<List<Projeto>> listar() {
-    // return ResponseEntity.ok(projetoService.listaProjetos()); // retorna 200
-    // }
 
     @GetMapping
     public ResponseEntity<List<ProjetoDTO>> listar() {
-        return ResponseEntity.ok(projetoService.listaProjetos()); // retorna 200
+        return ResponseEntity.ok(projetoService.listaProjetos());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ProjetoDTO> obterDadosPorId(@PathVariable Long id) {
-
         ProjetoDTO projeto = projetoService.obterDadosDeProjetos(id);
 
         if (Objects.isNull(projeto)) {
-
             return ResponseEntity.notFound().build();
-
         }
         return ResponseEntity.ok(projeto);
-        // return ResponseEntity.ok(projeto.get());
-
     }
 
     @DeleteMapping("/{id}")
@@ -84,19 +62,15 @@ public class ProjetoController {
         ProjetoDTO projeto = projetoService.obterDadosDeProjetos(id);
 
         if (Objects.isNull(projeto)) {
-
             return ResponseEntity.notFound().build();
-
         }
 
         projetoService.excluirTarefa(id);
-
         return ResponseEntity.noContent().build();
-
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProjetoDTO> atualizar(@PathVariable Long id,@Valid @RequestBody DadosProjetoDTO dados) {
+    public ResponseEntity<ProjetoDTO> atualizar(@PathVariable Long id, @Valid @RequestBody DadosProjetoDTO dados) {
         ProjetoDTO projeto = projetoService.obterDadosDeProjetos(id);
 
         if (Objects.isNull(projeto)) {
@@ -106,19 +80,14 @@ public class ProjetoController {
         return ResponseEntity.ok(projetoService.atualizaProjeto(id, dados).toDTO());
     }
 
-<<<<<<< HEAD
-=======
     @GetMapping("/usuario/{id}")
     public ResponseEntity<List<Projeto>> listarResponsavel(@PathVariable("id") Long idUsuario) {
         UsuarioDTO usuario = usuarioService.obterDadosDoUsuario(idUsuario);
 
         if (Objects.isNull(usuario)) {
-
             return ResponseEntity.notFound().build();
-
         }
         return ResponseEntity.ok(projetoService.listarProjetoDeUmUsuario(idUsuario));
     }
->>>>>>> 782b37417b11e498553f99d7a1e81ef345e25340
 
 }
